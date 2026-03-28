@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Apps",
-    "slug": "Apps",
+    "name": "Subverse",
+    "slug": "Subverse",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "apps",
+    "scheme": "subverse",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
