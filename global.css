@@ -17,13 +17,6 @@
   --color-destructive: #dc2626;
   --color-subscription: #8fd1bd;
 
-  --font-sans: sans-regular;
-  --font-sans-light: sans-light;
-  --font-sans-medium: sans-medium;
-  --font-sans-semibold: sans-semibold;
-  --font-sans-bold: sans-bold;
-  --font-sans-extrabold: sans-extrabold;
-
   --spacing-0: 0px;
   --spacing-1: 4px;
   --spacing-2: 8px;
@@ -74,7 +67,7 @@
   }
 
   .home-user {
-    @apply flex-row items-center;
+    @apply flex-row items-center gap-2;
   }
 
   .home-avatar {
@@ -82,15 +75,15 @@
   }
 
   .home-user-name {
-    @apply ml-4 text-2xl font-sans-bold text-primary;
+    @apply ml-2 text-2xl font-sans-bold text-primary;
   }
 
   .home-add-icon {
-    @apply size-12;
+    @apply size-12 ml-2;
   }
 
   .home-balance-card {
-    @apply my-2.5 min-h-50 justify-between gap-5 rounded-bl-4xl rounded-tr-4xl bg-accent p-6;
+    @apply my-2.5 min-h-50 justify-between gap-5 rounded-bl-4xl rounded-tr-4xl bg-accent  p-6;
   }
 
   .home-balance-label {
