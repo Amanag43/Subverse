@@ -13,11 +13,15 @@ import "@/global.css";
 import { formatCurrency } from "@/lib/utils";
 import dayjs from "dayjs";
 import { styled } from "nativewind";
+import { useState } from "react";
 import { FlatList, Image, Text, View } from "react-native";
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 const SafeAreaView = styled(RNSafeAreaView);
 
 export default function App() {
+  const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<
+    string | null
+  >(null);
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
       <View className="home-header">
@@ -48,13 +52,36 @@ export default function App() {
           horizontal
           showsHorizontalScrollIndicator={false}
           ListEmptyComponent={
-            <Text className="home-empty-state"> No Upcoming renewals yet.</Text>
+            <Text className="home-empty-state">No Upcoming renewals yet.</Text>
           }
         />
       </View>
-      <View>
+      <View className="flex-1">
         <ListHeading title="All Subscriptions" />
-        <SubscriptionCard {...HOME_SUBSCRIPTIONS[0]} />
+        <FlatList
+          className="flex-1"
+          data={HOME_SUBSCRIPTIONS}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <SubscriptionCard
+              {...item}
+              expanded={expandedSubscriptionId === item.id}
+              onPress={() =>
+                setExpandedSubscriptionId((currentId) =>
+                  currentId === item.id ? null : item.id,
+                )
+              }
+            />
+          )}
+          extraData={expandedSubscriptionId}
+          ItemSeparatorComponent={() => <View className="h-4" />}
+          showsVerticalScrollIndicator={false}
+          ListEmptyComponent={
+            <Text className="home-empty-state">
+              No active subscriptions yet.
+            </Text>
+          }
+        />
       </View>
     </SafeAreaView>
   );
